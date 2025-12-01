@@ -46,7 +46,7 @@ namespace TecInvoice_PDF
             Logger.Info("Attaching XML to the PDF...");
             PdfDictionary parameters = new PdfDictionary();
             parameters.Put(PdfName.ModDate, new PdfDate().GetPdfObject());
-            var fs = its.Pdf.Filespec.PdfFileSpec.CreateEmbeddedFileSpec(pdfDoc, File.ReadAllBytes(xmlFile), "factur-x.xml", "factur-x.xml", new PdfName("application/xml"), parameters, PdfName.Alternative);
+            var fs = its.Pdf.Filespec.PdfFileSpec.CreateEmbeddedFileSpec(pdfDoc, File.ReadAllBytes(xmlFile), "factur-x.xml", "factur-x.xml", new PdfName("text/xml"), parameters, PdfName.Alternative);
             pdfDoc.AddFileAttachment("factur-x.xml", fs);
             PdfArray array = new PdfArray();
             array.Add(fs.GetPdfObject().GetIndirectReference());
